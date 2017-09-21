@@ -464,7 +464,7 @@ else
     service 'perf-agent' do
       action [ :stop, :disable ]
     end
-
   end
-
 end
+
+include_recipe 'monitor::nagios_service_fix' unless node.workorder.rfcCi.ciClassName =~ /bom\..*\.Compute/

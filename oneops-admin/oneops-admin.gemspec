@@ -17,11 +17,12 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = %w()
 
   s.add_dependency "thor", '= 0.19.1'
+  s.add_dependency 'rails-observers', '0.1.2'
   s.add_dependency "activesupport", '= 4.1.10'
   s.add_dependency "activeresource", '= 4.0.0'
   s.add_dependency "activemodel", '= 4.1.10'
   s.add_dependency "ffi", '= 1.9.10'
-  s.add_dependency "fog", '= 1.37.0'
+  s.add_dependency "fog", '= 1.38.0'
   s.add_dependency "aws-s3", '= 0.6.3'
   s.add_dependency "chef", '= 11.18.12'
   s.add_dependency "ohai", '= 7.4.1'
@@ -50,5 +51,5 @@ Gem::Specification.new do |s|
   s.add_dependency "fog-aliyun", '= 0.1.0'
   s.bindir       = 'bin'
   s.require_path = 'lib'
-  s.files        = %w() + ["oneops-admin.gemspec"] + ["Gemfile"] + Dir.glob(".chef/**/*") + Dir.glob("lib/**/*") + ["#{Inductor::JAR}"] + Dir.glob('bin/**/*')
+  s.files        = %w() + ["oneops-admin.gemspec"] + ["Gemfile"] + Dir.glob(".chef/**/*") + Dir.glob("lib/**/*", File::FNM_DOTMATCH).reject { |f| f =~ /\.$/ || f =~ /\.\.$/ } + ["#{InductorUtil::JAR}"] + Dir.glob('bin/**/*')
 end
